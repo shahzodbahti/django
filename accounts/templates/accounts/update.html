@@ -1,0 +1,17 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+    <div class="container">
+        <form action="{% if ord %}{% url 'update_order' ord.id %}{% else %}{% url 'update_order' %}{% endif %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_name">Product nomi:</label>
+                <input id="id_name" type="text" name="name" value="{{ ord.product.name }}" class="form-control" placeholder="Product nomini kiriting">
+            </div>
+            <div class="form-group">
+                <label for="id_status">Status:</label>
+                <input id="id_status" type="text" name="status" value="{{ ord.status }}" class="form-control" placeholder="Status kiriting">
+            </div>
+            <button type="submit" class="btn btn-success">Saqlash</button>
+        </form>
+    </div>
+{% endblock %}
